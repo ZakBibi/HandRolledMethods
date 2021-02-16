@@ -1,0 +1,7 @@
+package ListMethods
+
+class ZFoldSpec {
+
+  ???
+
+}
