@@ -20,7 +20,6 @@ class ZFilter {
             }
         }
       }
-
       filterRec(l, List.empty)
     }
   }
