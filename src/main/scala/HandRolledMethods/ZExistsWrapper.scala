@@ -2,14 +2,14 @@ package HandRolledMethods
 
 import scala.annotation.tailrec
 
-class ZExists {
+class ZExistsWrapper[A](targetList: List[A]) {
 
-  def handRolledExists(l: List[Int], f: Int => Boolean): Boolean = {
-    if (l.isEmpty) false
+  def zexists(f: A => Boolean): Boolean = {
+    if (targetList.isEmpty) false
     else {
       @tailrec
-      def existsRec(nums: List[Int]): Boolean = {
-        nums match {
+      def existsRec(collection: List[A]): Boolean = {
+        collection match {
           case Nil => false
           case x :: xs =>
             if (f(x)) {
@@ -19,7 +19,7 @@ class ZExists {
             }
         }
       }
-      existsRec(l)
+      existsRec(targetList)
     }
   }
 

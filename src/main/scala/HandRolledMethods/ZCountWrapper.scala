@@ -2,14 +2,14 @@ package HandRolledMethods
 
 import scala.annotation.tailrec
 
-class ZCount {
+class ZCountWrapper[A](targetList: List[A]) {
 
-  def handRolledCount(l: List[Int], f: Int => Boolean): Int = {
-    if (l.isEmpty) 0
+  def zcount(f: A => Boolean): Int = {
+    if (targetList.isEmpty) 0
     else {
       @tailrec
-      def countRec(collectionOfNum: List[Int], currentCount: Int): Int = {
-        collectionOfNum match {
+      def countRec(collection: List[A], currentCount: Int): Int = {
+        collection match {
           case Nil => currentCount
           case x :: xs =>
             if (f(x)) {
@@ -20,7 +20,7 @@ class ZCount {
             }
         }
       }
-      countRec(l, 0)
+      countRec(targetList, 0)
     }
   }
 

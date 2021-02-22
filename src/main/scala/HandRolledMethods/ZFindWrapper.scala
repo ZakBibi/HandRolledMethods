@@ -2,14 +2,14 @@ package HandRolledMethods
 
 import scala.annotation.tailrec
 
-class ZFind {
+class ZFindWrapper[A](targetList: List[A]) {
 
-  def handRolledFind(l: List[Int], f: Int => Boolean): Option[Int] = {
-    if (l.isEmpty) None
+  def zfind(f: A => Boolean): Option[A] = {
+    if (targetList.isEmpty) None
     else {
       @tailrec
-      def findRec(nums: List[Int]): Option[Int] = {
-        nums match {
+      def findRec(collection: List[A]): Option[A] = {
+        collection match {
           case Nil => None
           case x :: xs =>
             if (f(x)) {
@@ -19,7 +19,7 @@ class ZFind {
             }
         }
       }
-      findRec(l)
+      findRec(targetList)
     }
   }
 
