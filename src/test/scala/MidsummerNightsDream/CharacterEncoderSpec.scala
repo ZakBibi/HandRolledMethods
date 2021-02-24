@@ -14,9 +14,6 @@ class CharacterEncoderSpec extends AnyFlatSpec with Matchers {
 
   it should "encode a list of upper case characters" in {
     val l = List('A', 'B', 'C')
-    val r = List('', '', '')
-    for (i <- r)
-      println(i.toInt)
     encoder.asciiEncoder(l) shouldBe List('', '', '')
   }
 
