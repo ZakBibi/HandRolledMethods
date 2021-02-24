@@ -3,17 +3,18 @@ package HandRolledMethods
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class ZIsEmptySpec extends AnyFlatSpec with Matchers {
+class ZIsEmptyWrapperSpec extends AnyFlatSpec with Matchers {
 
-  val e = new ZIsEmpty
+  implicit def zisEmpty[A](input: List[A]) = new ZIsEmptyWrapper(input)
 
   it should "return true with an empty list" in {
-    e.handRolledIsEmpty(List.empty) shouldBe true
+    val l = List[Int]()
+    l.zisEmpty shouldBe l.isEmpty
   }
 
   it should "return false with a non empty list" in {
     val l = List(1, 2, 3)
-    e.handRolledIsEmpty(l) shouldBe false
+    l.isEmpty shouldBe l.isEmpty
   }
 
 }

@@ -2,15 +2,15 @@ package HandRolledMethods
 
 import scala.annotation.tailrec
 
-class ZForAll {
+class ZForAllWrapper[A](targetList: List[A]) {
 
-  def handRolledForAll(l: List[Int], f: Int => Boolean): Boolean = {
-    if (l.isEmpty) {
+  def zforall(f: A => Boolean): Boolean = {
+    if (targetList.isEmpty) {
       false
     } else {
       @tailrec
-      def forallRec(nums: List[Int], currentBool: Boolean): Boolean = {
-        nums match {
+      def forallRec(collection: List[A], currentBool: Boolean): Boolean = {
+        collection match {
           case Nil => currentBool
           case x :: xs =>
             if (f(x)) {
@@ -20,7 +20,7 @@ class ZForAll {
             }
         }
       }
-      forallRec(l, currentBool = false)
+      forallRec(targetList, currentBool = false)
     }
   }
 

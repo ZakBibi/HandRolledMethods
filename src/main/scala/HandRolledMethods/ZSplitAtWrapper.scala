@@ -2,13 +2,13 @@ package HandRolledMethods
 
 import scala.annotation.tailrec
 
-class ZSplitAt {
+class ZSplitAtWrapper[A](targetList: List[A]) {
 
-  def handRolledSplitAt(l: List[Int], givenIndex: Int): (List[Int], List[Int]) = {
+  def zsplitAt(givenIndex: Int): (List[A], List[A]) = {
     @tailrec
-    def splitAtRec(l: List[Int], firstHalf: List[Int], secondHalf: List[Int], count: Int): (List[Int], List[Int]) = {
+    def splitAtRec(l: List[A], firstHalf: List[A], secondHalf: List[A], count: Int): (List[A], List[A]) = {
       l match {
-        case Nil => (List.empty, List.empty)
+        case Nil => (firstHalf, secondHalf)
         case x :: xs =>
           if (count < givenIndex) {
             val newFirstHalf = firstHalf :+ x
@@ -18,7 +18,7 @@ class ZSplitAt {
           }
       }
     }
-    splitAtRec(l, List.empty, List.empty, 0)
+    splitAtRec(targetList, List.empty, List.empty, 0)
   }
 
 }

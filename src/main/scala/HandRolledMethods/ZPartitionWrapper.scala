@@ -2,14 +2,14 @@ package HandRolledMethods
 
 import scala.annotation.tailrec
 
-class ZPartition {
+class ZPartitionWrapper[A](targetList: List[A]) {
 
-  def handRolledPartition(l: List[Int], givenFunc: Int => Boolean): (List[Int], List[Int]) = {
-    if (l.isEmpty) {
+  def zpartition(givenFunc: A => Boolean): (List[A], List[A]) = {
+    if (targetList.isEmpty) {
       (List.empty, List.empty)
     } else {
       @tailrec
-      def partitionRec(l: List[Int], firstHalf: List[Int], secondHalf: List[Int]): (List[Int], List[Int]) = {
+      def partitionRec(l: List[A], firstHalf: List[A], secondHalf: List[A]): (List[A], List[A]) = {
         l match {
           case Nil => (firstHalf, secondHalf)
           case x :: xs =>
@@ -22,8 +22,7 @@ class ZPartition {
             }
         }
       }
-
-      partitionRec(l, List.empty, List.empty)
+      partitionRec(targetList, List.empty, List.empty)
     }
   }
 

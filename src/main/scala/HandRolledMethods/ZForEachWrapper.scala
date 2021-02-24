@@ -2,13 +2,13 @@ package HandRolledMethods
 
 import scala.annotation.tailrec
 
-class ZForEach {
+class ZForEachWrapper[A](targetList: List[A]) {
 
-  def handRolledForEach(l: List[Any], f: Any => Unit): Unit = {
-    if (l.isEmpty) Unit
+  def zforeach(f: A => Unit): Unit = {
+    if (targetList.isEmpty) Unit
     else {
       @tailrec
-      def foreachRec(collection: List[Any]): Unit = {
+      def foreachRec(collection: List[A]): Unit = {
         collection match {
           case Nil => Unit
           case x :: xs =>
@@ -16,7 +16,7 @@ class ZForEach {
             foreachRec(xs)
         }
       }
-      foreachRec(l)
+      foreachRec(targetList)
     }
   }
 

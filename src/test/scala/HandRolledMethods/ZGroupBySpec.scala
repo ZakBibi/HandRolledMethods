@@ -3,8 +3,7 @@ package HandRolledMethods
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-class
-ZGroupBySpec extends AnyFlatSpec with Matchers {
+class ZGroupBySpec extends AnyFlatSpec with Matchers {
 
   val gb = new ZGroupBy
 

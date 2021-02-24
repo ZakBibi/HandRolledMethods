@@ -2,12 +2,12 @@ package HandRolledMethods
 
 import scala.annotation.tailrec
 
-class ZMkString {
+class ZMkStringWrapper[A](targetList: List[A]) {
 
-  def handRolledMkString(l: List[Int], delimiter: String): String = {
+  def zmkString(delimiter: String): String = {
     @tailrec
-    def mkStringRec(nums: List[Int], madeString: String): String = {
-      nums match {
+    def mkStringRec(collection: List[A], madeString: String): String = {
+      collection match {
         case Nil => madeString
         case x :: xs =>
           if (madeString == "") {
@@ -19,7 +19,7 @@ class ZMkString {
           }
       }
     }
-    mkStringRec(l, "")
+    mkStringRec(targetList, "")
   }
 
 }
