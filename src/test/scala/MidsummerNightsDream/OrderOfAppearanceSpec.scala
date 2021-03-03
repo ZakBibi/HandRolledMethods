@@ -4,7 +4,6 @@ import HandRolledMethods.ZFilterWrapper
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-
 import scala.io.Source
 
 class OrderOfAppearanceSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll {
@@ -45,6 +44,17 @@ class OrderOfAppearanceSpec extends AnyFlatSpec with Matchers with BeforeAndAfte
       "EGEUS", "COBWEB", "PUCK", "PHILOSTRATE", "MUSTARDSEED", "SNUG", "DEMETRIUS",
       "HIPPOLYTA", "THISBE")
     oOA.findDramatisPersonae(midsummerLines) shouldBe result
+  }
+
+  it should "get the order of appearance" in {
+    val result = Set("THESEUS", "HIPPOLYTA", "EGEUS", "HERMIA",
+      "DEMETRIUS", "LYSANDER", "HELENA", "QUINCE",
+      "BOTTOM", "FLUTE", "STARVELING", "SNOUT", "SNUG", "PUCK",
+      "OBERON", "TITANIA", "PYRAMUS", "THISBE", "PEASEBLOSSOM",
+      "COBWEB", "MOTH", "MUSTARDSEED", "PHILOSTRATE", "WALL", "LION", "MOONSHINE")
+
+    oOA.orderOfAppearance(midsummerLines, oOA.findDramatisPersonae(midsummerLines)) shouldBe result
+
   }
 
 }

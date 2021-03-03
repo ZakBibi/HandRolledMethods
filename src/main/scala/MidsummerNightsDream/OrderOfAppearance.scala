@@ -1,8 +1,5 @@
 package MidsummerNightsDream
 
-import HandRolledMethods.ZFilterWrapper
-
-import scala.annotation.tailrec
 import scala.collection.mutable
 
 class OrderOfAppearance {
@@ -26,8 +23,19 @@ class OrderOfAppearance {
     characters.toList
   }
 
-//  def orderOfAppearance(play: List[String], dramatisPersonae: List[String]): List[String] = {
-//    def orderOfAppearanceRec(dramatisPersonae: List[String], )
-//  }
+  def orderOfAppearance(play: List[String], dramatisPersonae: List[String]): mutable.LinkedHashSet[String] = {
+    val characters = play
+      .filter(x => isCaps(x))
+      .filter(_ != "")
+      .map(e => e.stripSuffix("."))
+      .filter(x => dramatisPersonae.contains(x))
+
+    var uniqueChars = mutable.LinkedHashSet[String]()
+
+    for (c <- characters)
+      uniqueChars += c
+
+    uniqueChars
+  }
 
 }
