@@ -57,4 +57,17 @@ class OrderOfAppearanceSpec extends AnyFlatSpec with Matchers with BeforeAndAfte
 
   }
 
+  it should "get order of exiting" in {
+    val result = Set("PUCK", "OBERON", "TITANIA", "THESEUS",
+      "BOTTOM", "DEMETRIUS", "THISBE", "LYSANDER", "HIPPOLYTA",
+      "PYRAMUS", "LION", "MOONSHINE", "WALL", "PHILOSTRATE",
+      "QUINCE", "FLUTE", "SNUG", "STARVELING", "HELENA", "HERMIA",
+      "EGEUS", "MUSTARDSEED", "COBWEB", "PEASEBLOSSOM", "MOTH", "SNOUT")
+
+    val reversedMidsummer = midsummerLines.reverse
+
+    oOA.orderOfAppearance(reversedMidsummer, oOA.findDramatisPersonae(midsummerLines)) shouldBe result
+
+  }
+
 }
