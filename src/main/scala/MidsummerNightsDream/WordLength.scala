@@ -15,7 +15,7 @@ class WordLength {
           .stripSuffix("!")
           .stripSuffix("?")
       }
-      .filter(e => e != "" && e != ",").count(s => s.length >= lengthLimit)
+      .filter(e => e != "" && e != "," && e != "*").count(s => s.length >= lengthLimit)
   }
 
   def countLessThanLength(play: List[String], lengthLimit: Int): Int = {
@@ -31,7 +31,7 @@ class WordLength {
           .stripSuffix("!")
           .stripSuffix("?")
       }
-      .filter(e => e != "" && e != ",").count(s => s.length <= lengthLimit)
+      .filter(e => e != "" && e != "," && e != "*").count(s => s.length <= lengthLimit)
   }
 
 }

@@ -21,7 +21,7 @@ class WordLengthSpec extends AnyFlatSpec with Matchers with BeforeAndAfterAll {
   }
 
   it should "find all words that are shorter than 7 characters" in {
-    wl.countLessThanLength(midsummerLines, 7) shouldBe 18272
+    wl.countLessThanLength(midsummerLines, 7) shouldBe 18268
   }
 
 }
