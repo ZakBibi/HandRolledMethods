@@ -2,11 +2,7 @@ package MidsummerNightsDream
 
 import scala.collection.mutable
 
-class OrderOfAppearance {
-
-  def isCaps(s: String): Boolean = {
-    s.toUpperCase == s
-  }
+class OrderOfAppearance extends IsCase {
 
   def findDramatisPersonae(play: List[String]): List[String] = {
     val indexOfDramatisPersonaeLine = play.indexOf("Dramatis Personae")

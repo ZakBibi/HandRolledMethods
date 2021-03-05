@@ -16,26 +16,6 @@ class OrderOfAppearanceSpec extends AnyFlatSpec with Matchers with BeforeAndAfte
     midsummerFile.close
   }
 
-  it should "find if the word is all caps or not" in {
-    val s = "HELLO"
-    oOA.isCaps(s) shouldBe true
-  }
-
-  it should "return false if word is not all caps" in {
-    val s = "Hello"
-    oOA.isCaps(s) shouldBe false
-  }
-
-  it should "return false is word is lowercase" in {
-    val s = "hello"
-    oOA.isCaps(s) shouldBe false
-  }
-
-  it should "return false if word is not all lowercase but not all uppercase either" in {
-    val s = "HeLlO"
-    oOA.isCaps(s) shouldBe false
-  }
-
   it should "get the names of the characters" in {
     val result = List("BOTTOM", "OBERON", "WALL", "SNOUT",
       "TITANIA", "LION", "STARVELING", "PYRAMUS", "THESEUS", "MOONSHINE",
